@@ -5,7 +5,15 @@
 ## Introductions
 The objective of this challenge is to create a machine learning models using open-source CO2 emissions data from Sentinel-5P satellite observations to predict future carbon emissions.
 
-## Actions
+
+**Evaluation**: Root Mean Squared Error (RMSE)
+
+## Timeline & Result
+
+### Timeline
+
+Day 1. 06/08/2023
+
 - [x] Remove the `year` column (v0).
 - [x] ~~Using GridSearchCV and MLPRegressor (v2)~~.
 - [x] Predictions should only in positive real (v3). 
@@ -21,7 +29,7 @@ The objective of this challenge is to create a machine learning models using ope
 | 06/08/2023 | `v3`    | `sklearn.neural_network.MLPRegressor`   | All except `year`                                | N/A          | 168.39246    |
 | 06/08/2023 | `v4`    | `sklearn.neural_network.MLPRegressor`   | All except `year`, `emission = max(0, emission)` | 141.67652    | 166.10065    |
 | 06/08/2023 | `v5`    | `sklearn.tree.DecisionTreeRegressor`    | `latitude`, `longitude` and `week_no`            | **15.09919** | **33.35922** |
-| 06/08/2023 | `v6`    | `sklearn.tree.RandomForestRegressor`    | `latitude`, `longitude` and `week_no`            |              |              |
+| 06/08/2023 | `v6`    | `sklearn.tree.RandomForestRegressor`    | `latitude`, `longitude` and `week_no`            | TBD          | TBD          |
 
 [^1]: except the `emission` as the prediction variable. Also, the `year` variable is encoded to the range `[1, len(unique(year))]`
 
