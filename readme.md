@@ -1,4 +1,6 @@
 # PS3E20 - Predict CO2 Emissions in Rwanda
+[Kaggle Playground Series - Season 3 Episode 20](https://www.kaggle.com/competitions/playground-series-s3e20)
+
 
 ## Introductions
 The objective of this challenge is to create a machine learning models using open-source CO2 emissions data from Sentinel-5P satellite observations to predict future carbon emissions.
