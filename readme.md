@@ -24,23 +24,30 @@ Day 2 - 07/08/2023
 - [x] [COVID-19](https://www.kaggle.com/competitions/playground-series-s3e20/discussion/429622) (v7).
 - [x] [Using DecisionTreeRegressor & BaggingRegressor (for ensemble)](https://www.kaggle.com/code/johnsmith44/ps3e20-co2-emissions-in-rwanda-compact-trick) (v8). 
 - [x] Using XGBRegressor & BaggingRegressor (for ensemble) (v10).
-- [ ] Using XGBRegressor & GridSearchCV (v11).
+- [x] [Multiplying a magic constant.](https://www.kaggle.com/competitions/playground-series-s3e20/discussion/429675)
+	- According the post, using a magic constant will boost the RMSE from 30.x to 2x. I'll experimenting this (but to be honest, that doesn't make any sense at all).
+
+
 
 ### Result
 
-| Day        | Version | Model Baseline                                                             | Features                                         | RMSE (train)[^2] | RMSE (test)[^3] |
-| ---------- | ------- | -------------------------------------------------------------------------- | ------------------------------------------------ | ---------------- | --------------- |
-| 06/08/2023 | `v1`    | `sklearn.linear_model.LinearRegression`                                    | All[^1]                                          | 142.25429        | 4851.07446      |
-| 06/08/2023 | `v3`    | `sklearn.neural_network.MLPRegressor`                                      | All except `year`                                | N/A              | 168.39246       |
-| 06/08/2023 | `v4`    | `sklearn.neural_network.MLPRegressor`                                      | All except `year`, `emission = max(0, emission)` | 141.67652        | 166.10065       |
-| 06/08/2023 | `v5`    | `sklearn.tree.DecisionTreeRegressor`                                       | `latitude`, `longitude` and `week_no`            | 15.09919         | 33.35922        |
-| 06/08/2023 | `v6`    | `sklearn.tree.RandomForestRegressor`                                       | `latitude`, `longitude` and `week_no`            | 15.69964         | 33.05568        |
-| 07/08/2023 | `v7`    | `sklearn.tree.DecisionTreeRegressor`                                       | `latitude`, `longitude` and `week_no`            | **11.48310**     | **31.15227**    |
-| 07/08/2023 | `v8`    | `sklearn.tree.DecisionTreeRegressor` & `sklearn.ensemble.BaggingRegressor` | `latitude`, `longitude` and `week_no`            | 11.80345         | 31.66813        |
-| 07/08/2023 | `v10`   | `xgboost.XGBRegressor` & `sklearn.ensemble.BaggingRegressor`               | `latitude`, `longitude` and `week_no`            | 16.64857         | 34.20177        |
-| 07/08/2023 | `v11`   | `xgboost.XGBRegressor` & `sklearn.model_selection.GridSearchCV`            | `latitude`, `longitude` and `week_no`            | 16.64857         | 34.20177        |
+| Day        | Version | Model Baseline                                                             | Features     | RMSE (train)[^2] | RMSE (test)[^3] |
+| ---------- | ------- | -------------------------------------------------------------------------- | ------------ | ---------------- | --------------- |
+| 06/08/2023 | `v1`    | `sklearn.linear_model.LinearRegression`                                    | [^1]         | 142.25429        | 4851.07446      |
+| 06/08/2023 | `v3`    | `sklearn.neural_network.MLPRegressor`                                      | [^7]         | 141.67652        | 166.10065       |
+| 06/08/2023 | `v5`    | `sklearn.tree.DecisionTreeRegressor` with default estimators               | [^4]         | 15.09919         | 33.35922        |
+| 06/08/2023 | `v6`    | `sklearn.tree.RandomForestRegressor` with default estimators               | [^4]         | 15.69964         | 33.05568        |
+| 07/08/2023 | `v7`    | `sklearn.tree.DecisionTreeRegressor` with default estimators               | [^4]         | 11.48310         | 31.15227        |
+| 07/08/2023 | `v8`    | `sklearn.tree.DecisionTreeRegressor` & `sklearn.ensemble.BaggingRegressor` | [^4][^6]     | 11.80345         | 31.66813        |
+| 07/08/2023 | `v10`   | `xgboost.XGBRegressor` & `sklearn.ensemble.BaggingRegressor`               | [^4][^6]     | 16.64857         | 34.20177        |
+| 07/08/2023 | `v11`   | `sklearn.tree.DecisionTreeRegressor` with 2000 estimators                  | [^4][^5][^6] | **4.612114**     | **31.06316**    |
 
-[^1]: except the `emission` as the prediction variable. Also, the `year` variable is encoded to the range `[1, len(unique(year))]`
+[^1]: aLL, except the `emission` as the prediction variable. Also, the `year` variable is id-encoded.
+[^4]: `latitude`, `longitude`, `week_no`
+[^5]: with `year` variable.
+[^6]: covid `emissions` normalized.
+[^7]: All except `year`, `emission = max(0, emission)`
+[^8]: clams in the compact trick to multiply the result with 1.06 will somehow boost the result.
 [^2]: on the full training dataframe
 [^3]: on the public testing dataframe
 
