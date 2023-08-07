@@ -23,8 +23,8 @@ Day 2 - 07/08/2023
 - [ ] ~~[Volcano eruption](https://www.kaggle.com/competitions/playground-series-s3e20/discussion/429232) (v7)~~.
 - [x] [COVID-19](https://www.kaggle.com/competitions/playground-series-s3e20/discussion/429622) (v7).
 - [x] [Using DecisionTreeRegressor & BaggingRegressor (for ensemble)](https://www.kaggle.com/code/johnsmith44/ps3e20-co2-emissions-in-rwanda-compact-trick) (v8). 
-- [ ] Using XGBRegressor & BaggingRegressor (for ensemble).
-- [ ] Using LGBMRegressor & BaggingRegressor (for ensemble).
+- [x] Using XGBRegressor & BaggingRegressor (for ensemble) (v10).
+- [ ] Using XGBRegressor & GridSearchCV (v11).
 
 ### Result
 
@@ -37,8 +37,8 @@ Day 2 - 07/08/2023
 | 06/08/2023 | `v6`    | `sklearn.tree.RandomForestRegressor`                                       | `latitude`, `longitude` and `week_no`            | 15.69964         | 33.05568        |
 | 07/08/2023 | `v7`    | `sklearn.tree.DecisionTreeRegressor`                                       | `latitude`, `longitude` and `week_no`            | **11.48310**     | **31.15227**    |
 | 07/08/2023 | `v8`    | `sklearn.tree.DecisionTreeRegressor` & `sklearn.ensemble.BaggingRegressor` | `latitude`, `longitude` and `week_no`            | 11.80345         | 31.66813        |
-| 07/08/2023 | `v9`    | `xgboost.XGBRegressor` & `sklearn.ensemble.BaggingRegressor`               | `latitude`, `longitude` and `week_no`            |                  |                 |
-| 07/08/2023 | `v10`   | `lightgbm.LGBMRegressor` & `sklearn.ensemble.BaggingRegressor`             | `latitude`, `longitude` and `week_no`            |                  |                 |
+| 07/08/2023 | `v10`   | `xgboost.XGBRegressor` & `sklearn.ensemble.BaggingRegressor`               | `latitude`, `longitude` and `week_no`            | 16.64857         | 34.20177        |
+| 07/08/2023 | `v11`   | `xgboost.XGBRegressor` & `sklearn.model_selection.GridSearchCV`            | `latitude`, `longitude` and `week_no`            | 16.64857         | 34.20177        |
 
 [^1]: except the `emission` as the prediction variable. Also, the `year` variable is encoded to the range `[1, len(unique(year))]`
 [^2]: on the full training dataframe
