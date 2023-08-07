@@ -12,7 +12,7 @@ The objective of this challenge is to create a machine learning models using ope
 
 ### Timeline
 
-Day 1. 06/08/2023
+Day 1 - 06/08/2023
 
 - [x] Remove the `year` column (v0).
 - [x] ~~Using GridSearchCV and MLPRegressor (v2)~~.
@@ -21,17 +21,25 @@ Day 1. 06/08/2023
 - [x] Using DecisionTreeRegressor as a new baseline (v5).
 - [x] Using RandomForestRegressor with GridSearchCV (v5).
 
+Day 2 - 07/08/2023
+
+- [ ] [Volcano eruption](https://www.kaggle.com/competitions/playground-series-s3e20/discussion/429232)
+- [x] [COVID-19](https://www.kaggle.com/competitions/playground-series-s3e20/discussion/429622)
+
 ## Result
 
-| Day        | Version | Model Baseline                          | Features                                         | RMSE (train) | RMSE (test)  |
-| ---------- | ------- | --------------------------------------- | ------------------------------------------------ | ------------ | ------------ |
+| Day        | Version | Model Baseline                          | Features                                         | RMSE (train)[^2] | RMSE (test)[^3]  |
+| ---------- | ------- | --------------------------------------- | ------------------------------------------------ | ---------------- | ---------------- |
 | 06/08/2023 | `v1`    | `sklearn.linear_model.LinearRegression` | All[^1]                                          | 142.25429    | 4851.07446   |
 | 06/08/2023 | `v3`    | `sklearn.neural_network.MLPRegressor`   | All except `year`                                | N/A          | 168.39246    |
 | 06/08/2023 | `v4`    | `sklearn.neural_network.MLPRegressor`   | All except `year`, `emission = max(0, emission)` | 141.67652    | 166.10065    |
 | 06/08/2023 | `v5`    | `sklearn.tree.DecisionTreeRegressor`    | `latitude`, `longitude` and `week_no`            | **15.09919** | 33.35922     |
-| 06/08/2023 | `v6`    | `sklearn.tree.RandomForestRegressor`    | `latitude`, `longitude` and `week_no`            | 15.69964     | **33.05568** |
+| 06/08/2023 | `v6`    | `sklearn.tree.RandomForestRegressor`    | `latitude`, `longitude` and `week_no`            | 15.69964     | 33.05568 |
+| 07/08/2023 | `v7`    | `sklearn.tree.DecisionTreeRegressor`    | `latitude`, `longitude` and `week_no`	    | 11.48310    | **31.15227** |
 
 [^1]: except the `emission` as the prediction variable. Also, the `year` variable is encoded to the range `[1, len(unique(year))]`
+[^2]: on the full training dataframe
+[^3]: on the public testing dataframe
 
 ## LICENSE
 This project is licensed under [The GNU GPL v3.0](LICENSE)
