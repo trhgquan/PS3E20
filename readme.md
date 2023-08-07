@@ -1,10 +1,7 @@
 # PS3E20 - Predict CO2 Emissions in Rwanda
 [Kaggle Playground Series - Season 3 Episode 20](https://www.kaggle.com/competitions/playground-series-s3e20)
 
-
-## Introductions
 The objective of this challenge is to create a machine learning models using open-source CO2 emissions data from Sentinel-5P satellite observations to predict future carbon emissions.
-
 
 **Evaluation**: Root Mean Squared Error (RMSE)
 
@@ -23,19 +20,25 @@ Day 1 - 06/08/2023
 
 Day 2 - 07/08/2023
 
-- [ ] [Volcano eruption](https://www.kaggle.com/competitions/playground-series-s3e20/discussion/429232)
-- [x] [COVID-19](https://www.kaggle.com/competitions/playground-series-s3e20/discussion/429622)
+- [ ] ~~[Volcano eruption](https://www.kaggle.com/competitions/playground-series-s3e20/discussion/429232) (v7)~~.
+- [x] [COVID-19](https://www.kaggle.com/competitions/playground-series-s3e20/discussion/429622) (v7).
+- [x] [Using DecisionTreeRegressor & BaggingRegressor (for ensemble)](https://www.kaggle.com/code/johnsmith44/ps3e20-co2-emissions-in-rwanda-compact-trick) (v8). 
+- [ ] Using XGBRegressor & BaggingRegressor (for ensemble).
+- [ ] Using LGBMRegressor & BaggingRegressor (for ensemble).
 
-## Result
+### Result
 
-| Day        | Version | Model Baseline                          | Features                                         | RMSE (train)[^2] | RMSE (test)[^3]  |
-| ---------- | ------- | --------------------------------------- | ------------------------------------------------ | ---------------- | ---------------- |
-| 06/08/2023 | `v1`    | `sklearn.linear_model.LinearRegression` | All[^1]                                          | 142.25429    | 4851.07446   |
-| 06/08/2023 | `v3`    | `sklearn.neural_network.MLPRegressor`   | All except `year`                                | N/A          | 168.39246    |
-| 06/08/2023 | `v4`    | `sklearn.neural_network.MLPRegressor`   | All except `year`, `emission = max(0, emission)` | 141.67652    | 166.10065    |
-| 06/08/2023 | `v5`    | `sklearn.tree.DecisionTreeRegressor`    | `latitude`, `longitude` and `week_no`            | **15.09919** | 33.35922     |
-| 06/08/2023 | `v6`    | `sklearn.tree.RandomForestRegressor`    | `latitude`, `longitude` and `week_no`            | 15.69964     | 33.05568 |
-| 07/08/2023 | `v7`    | `sklearn.tree.DecisionTreeRegressor`    | `latitude`, `longitude` and `week_no`	    | 11.48310    | **31.15227** |
+| Day        | Version | Model Baseline                                                             | Features                                         | RMSE (train)[^2] | RMSE (test)[^3] |
+| ---------- | ------- | -------------------------------------------------------------------------- | ------------------------------------------------ | ---------------- | --------------- |
+| 06/08/2023 | `v1`    | `sklearn.linear_model.LinearRegression`                                    | All[^1]                                          | 142.25429        | 4851.07446      |
+| 06/08/2023 | `v3`    | `sklearn.neural_network.MLPRegressor`                                      | All except `year`                                | N/A              | 168.39246       |
+| 06/08/2023 | `v4`    | `sklearn.neural_network.MLPRegressor`                                      | All except `year`, `emission = max(0, emission)` | 141.67652        | 166.10065       |
+| 06/08/2023 | `v5`    | `sklearn.tree.DecisionTreeRegressor`                                       | `latitude`, `longitude` and `week_no`            | 15.09919         | 33.35922        |
+| 06/08/2023 | `v6`    | `sklearn.tree.RandomForestRegressor`                                       | `latitude`, `longitude` and `week_no`            | 15.69964         | 33.05568        |
+| 07/08/2023 | `v7`    | `sklearn.tree.DecisionTreeRegressor`                                       | `latitude`, `longitude` and `week_no`            | **11.48310**     | **31.15227**    |
+| 07/08/2023 | `v8`    | `sklearn.tree.DecisionTreeRegressor` & `sklearn.ensemble.BaggingRegressor` | `latitude`, `longitude` and `week_no`            | 11.80345         | 31.66813        |
+| 07/08/2023 | `v9`    | `xgboost.XGBRegressor` & `sklearn.ensemble.BaggingRegressor`               | `latitude`, `longitude` and `week_no`            |                  |                 |
+| 07/08/2023 | `v10`   | `lightgbm.LGBMRegressor` & `sklearn.ensemble.BaggingRegressor`             | `latitude`, `longitude` and `week_no`            |                  |                 |
 
 [^1]: except the `emission` as the prediction variable. Also, the `year` variable is encoded to the range `[1, len(unique(year))]`
 [^2]: on the full training dataframe
