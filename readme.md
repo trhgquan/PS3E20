@@ -5,6 +5,8 @@ The objective of this challenge is to create a machine learning models using ope
 
 **Evaluation**: Root Mean Squared Error (RMSE)
 
+**Final result**: TBD
+
 ## Timeline & Result
 
 ### Timeline
