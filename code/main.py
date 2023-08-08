@@ -257,11 +257,47 @@ def v11(df, test_df):
     return pred
 
 
+def v12(df, test_df):
+    # Calculate the average weekly emissions for non-virus years (2019 and 2021)
+    avg_emission_non_virus = df[df['year'].isin((2019, 2021))].groupby('week_no')[
+        'emission'].mean()
+
+    # Calculate the average weekly emissions for virus year (2020)
+    avg_emission_virus = df[df['year'] == 2020].groupby('week_no')[
+        'emission'].mean()
+
+    # Calculate the ratios for each week
+    ratios_for_weeks = avg_emission_non_virus/avg_emission_virus
+
+    # Multiply the emission column for each row in 2020 by the corresponding ratio for the week of that row
+    df.loc[df['year'] == 2020,
+           'emission'] *= df['week_no'].map(ratios_for_weeks)
+
+    X = df[["latitude", "longitude", "week_no", "year"]]
+    y = df["emission"]
+
+    rf_model = RandomForestRegressor(n_estimators=2000, random_state=42)
+    rf_model.fit(X, y)
+
+    dev_pred = rf_model.predict(X)
+    print(f"Training rmse = {rmse(y, dev_pred)}")
+
+    MAGIC = 1.06
+    print(f"Training rmse (with magic) = {rmse(y, dev_pred * MAGIC)}")
+
+    pred = rf_model.predict(
+        test_df[["latitude", "longitude", "week_no", "year"]])
+    pred[pred < 0] = 0
+
+    pred = pred * MAGIC
+
+    return pred
+
+
 def main():
     df = pd.read_csv(TRAIN_CSV)
     test_df = pd.read_csv(TEST_CSV)
 
-    pred = None
     # pred = v1(df = df, test_df = test_df)
     # pred = v3(df = df, test_df = test_df)
     # pred = v5(df = df, test_df = test_df)
@@ -270,7 +306,8 @@ def main():
     # pred = v8(df = df, test_df = test_df)
     # pred = v10(df = df, test_df = test_df)
     # pred = v11(df = df, test_df = test_df)
-
+    # pred = v12(df=df, test_df=test_df)
+	
     submission_df = pd.DataFrame(zip(test_df["ID_LAT_LON_YEAR_WEEK"], pred), columns=[
                                  "ID_LAT_LON_YEAR_WEEK", "emission"])
 

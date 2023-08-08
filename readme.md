@@ -31,20 +31,21 @@ Day 2 - 07/08/2023
 
 Day 3 - 08/08/2023
 - [ ] Try using k-fold to re-estimate all previous approaches.
-- [ ] Try using magic constant with best approach.
+- [x] Try using magic constant with best approach (v12).
 
 ### Result
 
-| Day        | Version | Model Baseline                                                             | Features     | Training[^2] | Public testing[^3] | Private testing |
-| ---------- | ------- | -------------------------------------------------------------------------- | ------------ | ------------ | ------------------ | --------------- |
-| 06/08/2023 | `v1`    | `sklearn.linear_model.LinearRegression`                                    | [^1]         | 142.25429    | 4851.07446         |                 |
-| 06/08/2023 | `v3`    | `sklearn.neural_network.MLPRegressor`                                      | [^7]         | 141.67652    | 166.10065          |                 |
-| 06/08/2023 | `v5`    | `sklearn.tree.DecisionTreeRegressor` with default estimators               | [^4]         | 15.09919     | 33.35922           |                 |
-| 06/08/2023 | `v6`    | `sklearn.tree.RandomForestRegressor` with default estimators               | [^4]         | 15.69964     | 33.05568           |                 |
-| 07/08/2023 | `v7`    | `sklearn.tree.DecisionTreeRegressor` with default estimators               | [^4]         | 11.48310     | 31.15227           |                 |
-| 07/08/2023 | `v8`    | `sklearn.tree.DecisionTreeRegressor` & `sklearn.ensemble.BaggingRegressor` | [^4][^6]     | 11.80345     | 31.66813           |                 |
-| 07/08/2023 | `v10`   | `xgboost.XGBRegressor` & `sklearn.ensemble.BaggingRegressor`               | [^4][^6]     | 16.64857     | 34.20177           |                 |
-| 07/08/2023 | `v11`   | `sklearn.tree.DecisionTreeRegressor` with 2000 estimators                  | [^4][^5][^6] | **4.612114** | **31.06316**       |                 |
+| Day        | Version | Model Baseline                                                             | Features         | Training[^2] | Public testing[^3] | Private testing |
+| ---------- | ------- | -------------------------------------------------------------------------- | ---------------- | ------------ | ------------------ | --------------- |
+| 06/08/2023 | `v1`    | `sklearn.linear_model.LinearRegression`                                    | [^1]             | 142.25429    | 4851.07446         |                 |
+| 06/08/2023 | `v3`    | `sklearn.neural_network.MLPRegressor`                                      | [^7]             | 141.67652    | 166.10065          |                 |
+| 06/08/2023 | `v5`    | `sklearn.tree.DecisionTreeRegressor` with default estimators               | [^4]             | 15.09919     | 33.35922           |                 |
+| 06/08/2023 | `v6`    | `sklearn.tree.RandomForestRegressor` with default estimators               | [^4]             | 15.69964     | 33.05568           |                 |
+| 07/08/2023 | `v7`    | `sklearn.tree.DecisionTreeRegressor` with default estimators               | [^4]             | 11.48310     | 31.15227           |                 |
+| 07/08/2023 | `v8`    | `sklearn.tree.DecisionTreeRegressor` & `sklearn.ensemble.BaggingRegressor` | [^4][^6]         | 11.80345     | 31.66813           |                 |
+| 07/08/2023 | `v10`   | `xgboost.XGBRegressor` & `sklearn.ensemble.BaggingRegressor`               | [^4][^6]         | 16.64857     | 34.20177           |                 |
+| 07/08/2023 | `v11`   | `sklearn.tree.DecisionTreeRegressor` with 2000 estimators                  | [^4][^5][^6]     | **4.612114** | 31.06316           |                 |
+| 08/08/2023 | `v12`   | `sklearn.tree.DecisionTreeRegressor`, 2000 estimators                      | [^4][^5][^6][^7] | 11.07621     | **28.09778**       |                 |
 
 [^1]: aLL, except the `emission` as the prediction variable. Also, the `year` variable is id-encoded.
 [^4]: `latitude`, `longitude`, `week_no`
