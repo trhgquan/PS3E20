@@ -307,7 +307,7 @@ def main():
     # pred = v10(df = df, test_df = test_df)
     # pred = v11(df = df, test_df = test_df)
     # pred = v12(df=df, test_df=test_df)
-	
+
     submission_df = pd.DataFrame(zip(test_df["ID_LAT_LON_YEAR_WEEK"], pred), columns=[
                                  "ID_LAT_LON_YEAR_WEEK", "emission"])
 
