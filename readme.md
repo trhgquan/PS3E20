@@ -30,7 +30,7 @@ Day 2 - 07/08/2023
 	- According the post, using a magic constant will boost the RMSE from 30.x to 2x. I'll experimenting this (but to be honest, that doesn't make any sense at all).
 
 Day 3 - 08/08/2023
-- [ ] Try using k-fold to re-estimate all previous approaches.
+- ~~[ ] Try using k-fold to re-estimate all previous approaches.~~
 - [x] Try using magic constant with best approach (v12).
 
 ### Result
@@ -39,13 +39,14 @@ Day 3 - 08/08/2023
 | ---------- | --------------------------------- | -------------------------------------------------------------------------- | ---------------- | ------------ | ------------------ | --------------- |
 | 06/08/2023 | [v1](notebooks/ps3e20-v01.ipynb)  | `sklearn.linear_model.LinearRegression`                                    | [^1]             | 142.25429    | 4851.07446         |                 |
 | 06/08/2023 | [v3](notebooks/ps3e20-v03.ipynb)  | `sklearn.neural_network.MLPRegressor`                                      | [^7]             | 141.67652    | 166.10065          |                 |
-| 06/08/2023 | [v5](notebooks/ps3e20-v05.ipynb)  | `sklearn.tree.DecisionTreeRegressor` with default estimators               | [^4]             | 15.09919     | 33.35922           |                 |
-| 06/08/2023 | [v6](notebooks/ps3e20-v06.ipynb)  | `sklearn.tree.RandomForestRegressor` with default estimators               | [^4]             | 15.69964     | 33.05568           |                 |
-| 07/08/2023 | [v7](notebooks/ps3e20-v07.ipynb)  | `sklearn.tree.DecisionTreeRegressor` with default estimators               | [^4]             | 11.48310     | 31.15227           |                 |
+| 06/08/2023 | [v5](notebooks/ps3e20-v05.ipynb)  | `sklearn.tree.DecisionTreeRegressor`                                       | [^4]             | 15.09919     | 33.35922           |                 |
+| 06/08/2023 | [v6](notebooks/ps3e20-v06.ipynb)  | `sklearn.ensemble.RandomForestRegressor` with default estimators           | [^4]             | 15.69964     | 33.05568           |                 |
+| 07/08/2023 | [v7](notebooks/ps3e20-v07.ipynb)  | `sklearn.tree.DecisionTreeRegressor`                                       | [^4]             | 11.48310     | 31.15227           |                 |
 | 07/08/2023 | [v8](notebooks/ps3e20-v08.ipynb)  | `sklearn.tree.DecisionTreeRegressor` & `sklearn.ensemble.BaggingRegressor` | [^4][^6]         | 11.80345     | 31.66813           |                 |
 | 07/08/2023 | [v10](notebooks/ps3e20-v10.ipynb) | `xgboost.XGBRegressor` & `sklearn.ensemble.BaggingRegressor`               | [^4][^6]         | 16.64857     | 34.20177           |                 |
-| 07/08/2023 | [v11](notebooks/ps3e20-v11.ipynb) | `sklearn.tree.DecisionTreeRegressor` with 2000 estimators                  | [^4][^5][^6]     | **4.612114** | 31.06316           |                 |
-| 08/08/2023 | [v12](code/ps3e20.py)             | `sklearn.tree.DecisionTreeRegressor`, 2000 estimators                      | [^4][^5][^6][^7] | 11.07621     | **28.09778**       |                 |
+| 07/08/2023 | [v11](notebooks/ps3e20-v11.ipynb) | `sklearn.ensemble.RandomForestRegressor` with 2000 estimators              | [^4][^5][^6]     | **4.612114** | 31.06316           |                 |
+| 08/08/2023 | [v12](code/ps3e20.py)             | `sklearn.ensemble.RandomForestRegressor`, 2000 estimators                  | [^4][^5][^6][^7] | 11.07621     | **28.09778**       |                 |
+| 08/08/2023 | [v16](code/ps3e20.py)             | `sklearn.tree.DecisionTreeRegressor`                                       | [^4][^5][^6][^7] | 11.98245     | 29.09904           |                 |
 
 [^1]: aLL, except the `emission` as the prediction variable. Also, the `year` variable is id-encoded.
 [^4]: `latitude`, `longitude`, `week_no`
