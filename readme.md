@@ -30,8 +30,17 @@ Day 2 - 07/08/2023
 	- According the post, using a magic constant will boost the RMSE from 30.x to 2x. I'll experimenting this (but to be honest, that doesn't make any sense at all).
 
 Day 3 - 08/08/2023
+
 - ~~[ ] Try using k-fold to re-estimate all previous approaches.~~
 - [x] Try using magic constant with best approach (v12).
+
+Day 4 - 12/08/2023
+
+- [x] Using [a magic to "solve" the bug in submission - caused by a week shift](https://www.kaggle.com/competitions/playground-series-s3e20/discussion/429717).
+
+Day 5 - 13/08/2023
+
+- [ ] Using a Non-ML solution.
 
 ### Result
 
@@ -45,8 +54,9 @@ Day 3 - 08/08/2023
 | 07/08/2023 | [v8](code/ps3e20.py)  | `sklearn.tree.DecisionTreeRegressor` & `sklearn.ensemble.BaggingRegressor` | [^4][^6]         | 11.80345     | 31.66813           |                 |
 | 07/08/2023 | [v10](code/ps3e20.py) | `xgboost.XGBRegressor` & `sklearn.ensemble.BaggingRegressor`               | [^4][^6]         | 16.64857     | 34.20177           |                 |
 | 07/08/2023 | [v11](code/ps3e20.py) | `sklearn.ensemble.RandomForestRegressor` with 2000 estimators              | [^4][^5][^6]     | **4.612114** | 31.06316           |                 |
-| 08/08/2023 | [v12](code/ps3e20.py) | `sklearn.ensemble.RandomForestRegressor`, 2000 estimators                  | [^4][^5][^6][^7] | 11.07621     | **28.09778**       |                 |
+| 08/08/2023 | [v12](code/ps3e20.py) | `sklearn.ensemble.RandomForestRegressor`, 2000 estimators                  | [^4][^5][^6][^7] | 11.07621     | 28.09778           |                 |
 | 08/08/2023 | [v16](code/ps3e20.py) | `sklearn.tree.DecisionTreeRegressor`                                       | [^4][^5][^6][^7] | 11.98245     | 29.09904           |                 |
+| 12/08/2023 | [v17](code/ps3e20.py) | `sklearn.tree.DecisionTreeRegressor`                                       | [^4][^5][^6][^7] | 11.07621     | **26.84726**       |                 |
 
 [^1]: All, except the `emission` as the prediction variable. Also, the `year` variable is id-encoded.
 [^4]: `latitude`, `longitude`, `week_no`
