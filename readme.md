@@ -40,7 +40,11 @@ Day 4 - 12/08/2023
 
 Day 5 - 13/08/2023
 
-- [ ] Using a Non-ML solution.
+- [x] Using a Non-ML solution (v17 - v23).
+
+Day 6 - 14/08/2023
+
+- [ ] Try using lower magic.
 
 ### Result
 
@@ -56,7 +60,12 @@ Day 5 - 13/08/2023
 | 07/08/2023 | [v11](code/ps3e20.py) | `sklearn.ensemble.RandomForestRegressor` with 2000 estimators              | [^4][^5][^6]     | **4.612114** | 31.06316           |                 |
 | 08/08/2023 | [v12](code/ps3e20.py) | `sklearn.ensemble.RandomForestRegressor`, 2000 estimators                  | [^4][^5][^6][^7] | 11.07621     | 28.09778           |                 |
 | 08/08/2023 | [v16](code/ps3e20.py) | `sklearn.tree.DecisionTreeRegressor`                                       | [^4][^5][^6][^7] | 11.98245     | 29.09904           |                 |
-| 12/08/2023 | [v17](code/ps3e20.py) | `sklearn.tree.DecisionTreeRegressor`                                       | [^4][^5][^6][^7] | 11.07621     | **26.84726**       |                 |
+| 12/08/2023 | [v17](code/ps3e20.py) | `sklearn.tree.DecisionTreeRegressor`                                       | [^4][^5][^6][^7] | 11.07621     | 26.84726           |                 |
+| 13/08/2023 | [v18](code/ps3e20.py) | None                                                                       | [^1][^6]         | N/A          | 26.25738           |                 |
+| 13/08/2023 | [v19](code/ps3e20.py) | None + magic number 0.992                                                  | [^1][^6]         | N/A          | 26.04316           |                 |
+| 13/08/2023 | [v20](code/ps3e20.py) | None + magic number 1.07                                                   | [^1][^6]         | N/A          | 31.54728           |                 |
+| 13/08/2023 | [v21](code/ps3e20.py) | None                                                                       | [^1]             | N/A          | 23.02231           |                 |
+| 13/08/2023 | [v22](code/ps3e20.py) | None + magic number 0.992                                                  | [^1]             | N/A          | **22.97095**       |                 |
 
 [^1]: All, except the `emission` as the prediction variable. Also, the `year` variable is id-encoded.
 [^4]: `latitude`, `longitude`, `week_no`
