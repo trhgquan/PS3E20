@@ -539,6 +539,133 @@ def v22(df, test_df):
     return pred
 
 
+def v23(df, test_df):
+    # Combining latitude and longitude
+    df["combined_latitude_longitude"] = list(
+        zip(df["latitude"], df["longitude"]))
+    locations = df["combined_latitude_longitude"].unique()
+
+    def get_emission_loc_year(loc, year):
+        emission = df[(df["combined_latitude_longitude"] == loc) & (
+            df["year"] == year) & (df["week_no"] <= 48)].copy()
+        return emission["emission"].values
+
+    def get_best_emission(loc):
+        emission_2019 = get_emission_loc_year(loc=loc, year=2019)
+        emission_2020 = get_emission_loc_year(loc=loc, year=2020)
+        emission_2021 = get_emission_loc_year(loc=loc, year=2021)
+        return np.max([emission_2019, emission_2020, emission_2021], axis=0)
+
+    pred = np.hstack([get_best_emission(location) for location in locations])
+
+    # Adding Magic
+    MAGIC = 1.07
+    pred = pred * MAGIC
+
+    return pred
+
+
+def v24(df, test_df):
+    # Combining latitude and longitude
+    df["combined_latitude_longitude"] = list(
+        zip(df["latitude"], df["longitude"]))
+    locations = df["combined_latitude_longitude"].unique()
+
+    def get_emission_loc_year(loc, year):
+        emission = df[(df["combined_latitude_longitude"] == loc) & (
+            df["year"] == year) & (df["week_no"] <= 48)].copy()
+        return emission["emission"].values
+
+    def get_best_emission(loc):
+        emission_2019 = get_emission_loc_year(loc=loc, year=2019)
+        emission_2020 = get_emission_loc_year(loc=loc, year=2020)
+        emission_2021 = get_emission_loc_year(loc=loc, year=2021)
+        return np.max([emission_2019, emission_2020, emission_2021], axis=0)
+
+    pred = np.hstack([get_best_emission(location) for location in locations])
+
+    # Adding Magic
+    MAGIC = .972
+    pred = pred * MAGIC
+
+    return pred
+
+
+def v25(df, test_df):
+    # Combining latitude and longitude
+    df["combined_latitude_longitude"] = list(
+        zip(df["latitude"], df["longitude"]))
+    locations = df["combined_latitude_longitude"].unique()
+
+    def get_emission_loc_year(loc, year):
+        emission = df[(df["combined_latitude_longitude"] == loc) & (
+            df["year"] == year) & (df["week_no"] <= 48)].copy()
+        return emission["emission"].values
+
+    def get_best_emission(loc):
+        emission_2019 = get_emission_loc_year(loc=loc, year=2019)
+        emission_2020 = get_emission_loc_year(loc=loc, year=2020)
+        emission_2021 = get_emission_loc_year(loc=loc, year=2021)
+        return np.max([emission_2019, emission_2020, emission_2021], axis=0)
+
+    pred = np.hstack([get_best_emission(location) for location in locations])
+
+    # Adding Magic
+    MAGIC = 1.007
+    pred = pred * MAGIC
+
+    return pred
+
+
+def v25(df, test_df):
+    # Combining latitude and longitude
+    df["combined_latitude_longitude"] = list(
+        zip(df["latitude"], df["longitude"]))
+    locations = df["combined_latitude_longitude"].unique()
+
+    def get_emission_loc_year(loc, year):
+        emission = df[(df["combined_latitude_longitude"] == loc) & (
+            df["year"] == year) & (df["week_no"] <= 48)].copy()
+        return emission["emission"].values
+
+    def get_best_emission(loc):
+        emission_2019 = get_emission_loc_year(loc=loc, year=2019)
+        return emission_2019
+
+    pred = np.hstack([get_best_emission(location) for location in locations])
+
+    # Adding Magic
+    MAGIC = 1.07
+    pred = pred * MAGIC
+
+    return pred
+
+
+def v25(df, test_df):
+    # Combining latitude and longitude
+    df["combined_latitude_longitude"] = list(
+        zip(df["latitude"], df["longitude"]))
+    locations = df["combined_latitude_longitude"].unique()
+
+    def get_emission_loc_year(loc, year):
+        emission = df[(df["combined_latitude_longitude"] == loc) & (
+            df["year"] == year) & (df["week_no"] <= 48)].copy()
+        return emission["emission"].values
+
+    def get_best_emission(loc):
+        emission_2019 = get_emission_loc_year(loc=loc, year=2019)
+        emission_2020 = get_emission_loc_year(loc=loc, year=2020)
+        return np.max([emission_2019, emission_2020], axis=0)
+
+    pred = np.hstack([get_best_emission(location) for location in locations])
+
+    # Adding Magic
+    MAGIC = .992
+    pred = pred * MAGIC
+
+    return pred
+
+
 def main():
     df = pd.read_csv(TRAIN_CSV)
     test_df = pd.read_csv(TEST_CSV)
@@ -559,6 +686,11 @@ def main():
     # pred = v20(df=df, test_df=test_df)
     # pred = v21(df=df, test_df=test_df)
     # pred = v22(df=df, test_df=test_df)
+    # pred = v23(df=df, test_df=test_df)
+    # pred = v24(df=df, test_df=test_df)
+    # pred = v25(df=df, test_df=test_df)
+    # pred = v26(df=df, test_df=test_df)
+    # pred = v27(df=df, test_df=test_df)
 
     submission_df = pd.DataFrame(zip(test_df["ID_LAT_LON_YEAR_WEEK"], pred), columns=[
                                  "ID_LAT_LON_YEAR_WEEK", "emission"])
