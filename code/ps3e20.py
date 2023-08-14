@@ -617,7 +617,7 @@ def v25(df, test_df):
     return pred
 
 
-def v25(df, test_df):
+def v26(df, test_df):
     # Combining latitude and longitude
     df["combined_latitude_longitude"] = list(
         zip(df["latitude"], df["longitude"]))
@@ -641,7 +641,7 @@ def v25(df, test_df):
     return pred
 
 
-def v25(df, test_df):
+def v27(df, test_df):
     # Combining latitude and longitude
     df["combined_latitude_longitude"] = list(
         zip(df["latitude"], df["longitude"]))
