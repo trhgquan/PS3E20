@@ -5,7 +5,7 @@ The objective of this challenge is to create a machine learning models using ope
 
 **Evaluation**: Root Mean Squared Error (RMSE)
 
-**Final result**: TBD
+**Final result**: 28.09778 (Public) - 12.3887 (Private) - Ranked 110th/1440 (Top 8%)
 
 ## Timeline & Result
 
